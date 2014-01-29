@@ -1,5 +1,7 @@
 class osx {
 
+  include osx::dock
+
   osx::defaults { 'disable "Are you sure?" dialog':
     domain => 'com.apple.LaunchServices',
     key    => 'LSQuarantine',
