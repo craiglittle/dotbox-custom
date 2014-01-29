@@ -54,4 +54,8 @@ class osx {
     '
   }
 
+  osx::unload { 'turn off notification center':
+    plist => '/System/Library/LaunchAgents/com.apple.notificationcenterui'
+  }
+
 }
