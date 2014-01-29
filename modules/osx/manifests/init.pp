@@ -58,4 +58,9 @@ class osx {
     plist => '/System/Library/LaunchAgents/com.apple.notificationcenterui'
   }
 
+  file { "/Users/${id}/Downloads/About Downloads.lpdf":
+    ensure => absent,
+    force  => true
+  }
+
 }
