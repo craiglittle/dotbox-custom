@@ -6,7 +6,7 @@ define dotfile ($subdir, $dotfile = $name) {
   file { "${home}/.${dotfile}":
     ensure  => link,
     target  => "${dotfiles_dir}/${subdir}/${dotfile}.symlink",
-    require => Repository[$dotfiles_dir]
+    require => Repository['dotfiles']
   }
 
 }
