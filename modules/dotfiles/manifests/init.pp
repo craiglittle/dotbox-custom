@@ -7,6 +7,12 @@ class dotfiles {
     destination => $dotfiles::dir
   }
 
+  file { "${home}/bin":
+    ensure  => link,
+    target  => "${dotfiles::dir}/bin",
+    require => Repository['dotfiles']
+  }
+
   dotfile { 'bash_profile' : subdir => 'bash'  }
   dotfile { 'bashrc'       : subdir => 'bash'  }
   dotfile { 'gitconfig'    : subdir => 'git'   }

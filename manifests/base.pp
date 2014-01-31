@@ -4,7 +4,8 @@ Exec {
     '/usr/bin',
     '/bin',
     '/usr/sbin',
-    '/sbin'
+    '/sbin',
+    "${home}/bin"
   ]
 
 }
