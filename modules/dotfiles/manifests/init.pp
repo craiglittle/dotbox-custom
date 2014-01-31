@@ -7,6 +7,17 @@ class dotfiles {
     destination => $dotfiles::dir
   }
 
+  repository { 'vundle':
+    source      => 'gmarik/vundle',
+    destination => "${home}/.vim/bundle/vundle",
+    require     => Dotfile['vim']
+  }
+
+  exec { 'install vundle packages':
+    command => 'vim +BundleInstall +qall',
+    require => Repository['vundle']
+  }
+
   file { "${home}/bin":
     ensure  => link,
     target  => "${dotfiles::dir}/bin",
