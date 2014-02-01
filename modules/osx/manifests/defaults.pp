@@ -1,7 +1,5 @@
 define osx::defaults ($domain, $key, $value, $type = undef, $user = $id) {
 
-  $defaults = '/usr/bin/defaults'
-
   if $type == undef {
     $_type = $value ? {
       true    => 'bool',
@@ -24,8 +22,8 @@ define osx::defaults ($domain, $key, $value, $type = undef, $user = $id) {
   }
 
   exec { "OS X defaults: ${domain}:${key} => ${value}":
-    command => "${defaults} write ${domain} ${key} -${_type} '${value}'",
-    unless  => "${defaults} read ${domain} ${key} | grep '^${_value}$'"
+    command => "defaults write ${domain} ${key} -${_type} '${value}'",
+    unless  => "defaults read ${domain} ${key} | grep '^${_value}$'"
   }
 
 }

@@ -9,7 +9,6 @@ class osx::dock {
 
   exec { 'refresh the dock':
     command     => 'killall Dock',
-    path        => '/usr/bin',
     refreshonly => true
   }
 
