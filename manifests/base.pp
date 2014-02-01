@@ -1,5 +1,7 @@
 Exec {
 
+  logoutput => on_failure,
+
   path => [
     '/usr/bin',
     '/bin',
