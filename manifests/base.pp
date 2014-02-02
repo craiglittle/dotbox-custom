@@ -17,6 +17,8 @@ node default {
   $home = "/Users/${id}"
 
   include osx
+  include homebrew
   include dotfiles
+  include development
 
 }
