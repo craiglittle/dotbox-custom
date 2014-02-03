@@ -9,7 +9,8 @@ class homebrew {
   }
 
   exec { 'tap homebrew versions':
-    command => 'brew tap homebrew/versions'
+    command => 'brew tap homebrew/versions',
+    unless  => "ls ${homebrew::dir}/Cellar/gcc*"
   }
 
 }
