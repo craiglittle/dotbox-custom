@@ -27,5 +27,6 @@ node default {
   include homebrew
   include dotfiles
   include development
+  include applications
 
 }
