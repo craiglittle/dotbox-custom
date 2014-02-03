@@ -1,3 +1,7 @@
+require homebrew
+
+$home = "/Users/${id}"
+
 Exec {
 
   logoutput => on_failure,
@@ -7,14 +11,17 @@ Exec {
     '/bin',
     '/usr/sbin',
     '/sbin',
-    "${home}/bin"
+    "${home}/bin",
+    "${homebrew::dir}/bin"
+  ],
+
+  environment => [
+    "HOME=${home}"
   ]
 
 }
 
 node default {
-
-  $home = "/Users/${id}"
 
   include osx
   include homebrew
