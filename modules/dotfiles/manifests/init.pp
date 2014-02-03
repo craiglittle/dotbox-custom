@@ -14,7 +14,7 @@ class dotfiles {
   }
 
   exec { 'install vundle packages':
-    command => 'vim +BundleInstall +qall',
+    command => 'vim +BundleInstall! +BundleClean +qall',
     require => Repository['vundle']
   }
 
