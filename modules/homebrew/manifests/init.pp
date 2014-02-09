@@ -8,9 +8,4 @@ class homebrew {
     creates     => "${homebrew::dir}/bin/brew"
   }
 
-  exec { 'tap homebrew versions':
-    command => 'brew tap homebrew/versions',
-    unless  => "ls ${homebrew::dir}/Cellar/gcc*"
-  }
-
 }

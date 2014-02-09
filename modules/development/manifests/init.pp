@@ -16,10 +16,4 @@ class development {
     require  => Repository['homebrew']
   }
 
-  package { 'gcc':
-    name     => 'homebrew/versions/gcc48',
-    provider => homebrew,
-    require  => Exec['tap homebrew versions']
-  }
-
 }
