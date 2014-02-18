@@ -11,8 +11,7 @@ Exec {
     '/bin',
     '/usr/sbin',
     '/sbin',
-    "${home}/bin",
-    "${homebrew::dir}/bin"
+    "${home}/bin"
   ],
 
   environment => [

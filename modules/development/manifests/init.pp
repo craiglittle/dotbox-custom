@@ -12,8 +12,8 @@ class development {
       'vim'
     ]:
 
-    provider => homebrew,
-    require  => Repository['homebrew']
+    provider => brew,
+    ensure   => installed
   }
 
 }
