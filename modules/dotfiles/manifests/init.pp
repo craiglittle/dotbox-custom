@@ -3,7 +3,7 @@ class dotfiles {
   $dir = "${home}/.dotfiles"
 
   repository { 'dotfiles':
-    source      => 'craiglittle/dotfiles',
+    source      => "${current_user}/dotfiles",
     destination => $dotfiles::dir
   }
 

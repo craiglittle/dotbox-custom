@@ -1,6 +1,6 @@
 require homebrew
 
-$home = "/Users/${id}"
+$home = "/Users/${current_user}"
 
 Exec {
 

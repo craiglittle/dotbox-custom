@@ -1,6 +1,6 @@
 define dotfile ($subdir, $dotfile = $name) {
 
-  $home         = "/Users/${id}"
+  $home         = "/Users/${current_user}"
   $dotfiles_dir = $dotfiles::dir
 
   file { "${home}/.${dotfile}":
