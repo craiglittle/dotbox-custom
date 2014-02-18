@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+current_dir=$(dirname $0)
+
+if xcode-select -p > null ; then
+  echo 'Xcode is already installed.'
+else
+  xcode-select --install
+
+  read -p 'Press any key to continue the bootstrap process.'
+fi
+
+sudo mkdir -p /usr/local
+
+if ! sudo gem list -i puppet > /dev/null ; then
+  sudo gem install puppet
+fi
+
+sudo puppet apply --libdir "${current_dir}/../lib" \
+                  --modulepath "${current_dir}/../modules" \
+                  "${current_dir}/../manifests/base.pp"
