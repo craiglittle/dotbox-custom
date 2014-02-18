@@ -2,7 +2,18 @@
 
 set -e
 
-current_dir=$(dirname $0)
+dotbox_dir="$(dirname $0)/../"
+libdir="${dotbox_dir}/lib"
+modulepath="${dotbox_dir}/modules"
+manifest="${dotbox_dir}/manifests/base.pp"
+
+module_not_installed() {
+  [[ `puppet module list --modulepath $modulepath | grep $1 | wc -l` -eq 0 ]]
+}
+
+install_module() {
+  puppet module install -i $modulepath $1 --version $2
+}
 
 if xcode-select -p > null ; then
   echo 'Xcode is already installed.'
@@ -18,7 +29,11 @@ if ! sudo gem list -i puppet > /dev/null ; then
   sudo gem install puppet
 fi
 
-sudo puppet apply --libdir "${current_dir}/../lib" \
-                  --modulepath "${current_dir}/../modules" \
+if module_not_installed bjoernalbers-homebrew ; then
+  install_module bjoernalbers-homebrew 0.2.0
+fi
+
+sudo puppet apply --libdir $libdir \
+                  --modulepath $modulepath \
                   --hiera_config /dev/null \
-                  "${current_dir}/../manifests/base.pp"
+                  $manifest
