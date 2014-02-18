@@ -20,4 +20,5 @@ fi
 
 sudo puppet apply --libdir "${current_dir}/../lib" \
                   --modulepath "${current_dir}/../modules" \
+                  --hiera_config /dev/null \
                   "${current_dir}/../manifests/base.pp"
